@@ -4,21 +4,22 @@ import android.annotation.SuppressLint
 import com.example.currencyexchangeapi.account.BankAccount
 import com.example.currencyexchangeapi.constants.Constants
 import com.example.currencyexchangeapi.currency.AccountCurrency
-import com.example.currencyexchangeapi.currency.Currencies
+import com.example.currencyexchangeapi.currency.CurrenciesToExchangeRate
 import com.example.currencyexchangeapi.currency.Currency
+import com.example.currencyexchangeapi.currency.CurrencyToStoreHistory
 import java.math.BigDecimal
 import kotlin.Exception
 
 
-class ExchangeImpl : Exchange {
+open class ExchangeImpl : Exchange {
 
-    val currencies: HashMap<String, Currency> = Currencies.initCurrencies();
+    val currenciesToExchangeRate: HashMap<String, Currency> = CurrenciesToExchangeRate.initCurrencies();
 
     @SuppressLint("SuspiciousIndentation")
     override fun exchange(
         currencyToSellName: String, currencyToBuyName: String,
         amountToExchange: Double,
-        bankAccount: BankAccount
+        bankAccount: BankAccount,
     ): BankAccount {
 
 
@@ -50,23 +51,21 @@ class ExchangeImpl : Exchange {
 
     private fun currencyToSellAmountAfterExchange(
         accountCurrency: AccountCurrency,
-        amountToExchange: Double, exchangeCount: Int
+        amountToExchange: Double, exchangeCount: Int,
     ): AccountCurrency {
         val calculatedAccountCurrency: AccountCurrency;
         if (exchangeCount < 5) {
             calculatedAccountCurrency = AccountCurrency(
-                accountCurrency.getAmount().subtract(BigDecimal.valueOf(amountToExchange)),
+                accountCurrency.getAmount().subtract(BigDecimal(amountToExchange).stripTrailingZeros()),
                 accountCurrency.getName()
             );
 
         } else {
             calculatedAccountCurrency = AccountCurrency(
                 accountCurrency.getAmount().subtract(
-                    BigDecimal.valueOf(amountToExchange)
+                    BigDecimal(amountToExchange)
                         .add(
-                            BigDecimal.valueOf(amountToExchange)
-                                .multiply(BigDecimal.valueOf(Constants.EXCHANGE_CURRENCY_FEE))
-                        )
+                            BigDecimal(calculateFee(amountToExchange)))
                 ).stripTrailingZeros(), accountCurrency.getName()
             );
         }
@@ -84,14 +83,20 @@ class ExchangeImpl : Exchange {
         accountCurrency: AccountCurrency,
         amountToExchange: Double,
     ): AccountCurrency {
-        val currencies = Currencies.initCurrencies();
+        val currenciesToExchangeRate = CurrenciesToExchangeRate.initCurrencies();
         return AccountCurrency(
             accountCurrency.getAmount().add(
-                BigDecimal.valueOf(amountToExchange)
+                BigDecimal(amountToExchange).stripTrailingZeros()
                     .multiply(
-                        currencies.get(accountCurrency.getName())?.getPrice()
+                        currenciesToExchangeRate.get(accountCurrency.getName())?.getPrice()
                     ).stripTrailingZeros()
             ), accountCurrency.getName()
         );
+    }
+
+    companion object {
+        fun calculateFee(currencyToExchange:Double): Double {
+            return currencyToExchange * Constants.EXCHANGE_CURRENCY_FEE;
+        }
     }
 }

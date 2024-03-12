@@ -30,6 +30,6 @@ class ExchangesHistory(
 
     override fun toString(): String {
         var s = "St"
-        return " $operation   $currencyAmount $currencyName)";
+        return " $operation   $currencyAmount \t $currencyName";
     }
 }

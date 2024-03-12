@@ -6,7 +6,9 @@ class Currency (
     private val name:String,
     private val price: BigDecimal,
 
+
 ){
+
     fun getName():String {
         return this.name;
     }
@@ -14,5 +16,10 @@ class Currency (
     fun getPrice():BigDecimal {
         return this.price;
     }
+
+    override fun toString(): String {
+        return "Currency(name='$name', price=$price)"
+    }
+
 
 }

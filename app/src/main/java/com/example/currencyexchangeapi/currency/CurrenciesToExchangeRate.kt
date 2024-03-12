@@ -3,10 +3,10 @@ package com.example.currencyexchangeapi.currency
 import java.math.BigDecimal
 
 
-class Currencies (){
+class CurrenciesToExchangeRate (){
 
     companion object{
-        val EURO = Currency("EUR", BigDecimal(0.80))
+        val EURO = Currency("EUR", BigDecimal(0.8))
 
         val USDOLLAR = Currency("USD",  BigDecimal(1.25))
 
