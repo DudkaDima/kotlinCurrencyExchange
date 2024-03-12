@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         val balanceView = findViewById<RecyclerView>(R.id.rec_view)
         //ViewForUserHistory
         val historyBalance = findViewById<RecyclerView>(R.id.history_view)
-
+        historyBalance.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
 
         //Init history
         var historyList: ArrayList<ExchangesHistory> = ArrayList();
