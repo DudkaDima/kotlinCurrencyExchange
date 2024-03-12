@@ -6,7 +6,6 @@ import java.math.BigDecimal
 class Constants {
     companion object {
         val EXCHANGE_CURRENCY_FEE:Double = 0.007 ;
-        val EURO_PRICE: BigDecimal = BigDecimal.valueOf(1.10);
         var currencies_base: HashMap<String, Int> = HashMap();
         
         fun initCurrencies() {

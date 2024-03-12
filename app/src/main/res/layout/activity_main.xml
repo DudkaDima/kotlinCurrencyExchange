@@ -71,14 +71,24 @@
         tools:listitem="@layout/exchange_history_layout" />
 
 
-    <TextView
-        android:id="@+id/exchangeBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="exchange"
+<!--    <TextView-->
+<!--        android:id="@+id/exchangeBtn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:text="exchange"-->
 
-        android:textSize="24sp"
+<!--        android:textSize="24sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/history_view" />-->
+
+    <Button
+        android:text="Exchange"
+        android:id="@+id/buttonToExchange"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
