@@ -5,10 +5,7 @@ import java.math.BigDecimal
 class Currency (
     private val name:String,
     private val price: BigDecimal,
-
-
 ){
-
     fun getName():String {
         return this.name;
     }

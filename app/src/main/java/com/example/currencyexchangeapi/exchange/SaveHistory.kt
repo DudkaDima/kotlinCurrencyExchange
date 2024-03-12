@@ -6,7 +6,6 @@ import com.example.currencyexchangeapi.currency.Currency
 import com.example.currencyexchangeapi.currency.CurrencyToStoreHistory
 
 class SaveHistory() {
-
     companion object{
         fun saveHistory(
             bankAccountBeforeSave: HashMap<String, AccountCurrency>, bankAccountToSave: BankAccount, currencyToSell: String,
@@ -20,8 +19,6 @@ class SaveHistory() {
             listOf.add(Currency(currencyToBuy, bankAccountToSave.getCurrencies().get(currencyToBuy)?.getAmount()!!.subtract(
                 bankAccountBeforeSave.get(currencyToBuy)!!.getAmount().stripTrailingZeros()
             )))
-
-
             return listOf;
         }
     }

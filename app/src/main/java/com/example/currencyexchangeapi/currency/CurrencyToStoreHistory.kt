@@ -11,7 +11,6 @@ class CurrencyToStoreHistory(
     fun getCurrencies(): List<Currency> {
         return this.currencies;
     }
-
     fun setCurrencies(listCurrencies: List<Currency>) {
         this.currencies = listCurrencies;
     }
@@ -32,6 +31,4 @@ class CurrencyToStoreHistory(
     override fun toString(): String {
         return "CurrencyToStoreHistory(currencies=$currencies)"
     }
-
-
 }

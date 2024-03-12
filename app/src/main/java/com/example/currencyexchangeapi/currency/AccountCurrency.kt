@@ -9,9 +9,7 @@ class AccountCurrency(
 {
     fun getAmount(): BigDecimal {
         return this.amount;
-
     }
-
     fun getName(): String {
         return this.name;
     }
@@ -19,11 +17,9 @@ class AccountCurrency(
     fun setAmount(amount: BigDecimal)  {
         this.amount = amount;
     }
-
     fun isAmountOk(): Boolean {
         return this.amount >= BigDecimal.ZERO;
     }
-
     override fun toString(): String {
         return "Currency(amount=$amount, name='$name')"
     }

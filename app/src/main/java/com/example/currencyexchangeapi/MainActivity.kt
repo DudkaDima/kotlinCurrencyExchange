@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -39,7 +38,8 @@ class MainActivity : AppCompatActivity() {
         val balanceView = findViewById<RecyclerView>(R.id.rec_view)
         //ViewForUserHistory
         val historyBalance = findViewById<RecyclerView>(R.id.history_view)
-        historyBalance.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
+        historyBalance.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
 
         //Init history
         var historyList: ArrayList<ExchangesHistory> = ArrayList();
@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity() {
         )
         historyBalance.adapter = ExchangesAdapter(this, historyList)
         val data = arrayListOf<String>();
-
 
         //Init balance
         db.getCurrencyAmount().getCurrencies().forEach { entry ->
@@ -64,8 +63,6 @@ class MainActivity : AppCompatActivity() {
         );
         balanceView.adapter;
         balanceView.adapter = balanceAdapter;
-
-
 
         //Button for making exchanges
         var showDialog: Button = findViewById(R.id.buttonToExchange);
@@ -104,7 +101,6 @@ class MainActivity : AppCompatActivity() {
                             db.getCurrencyAmount()
                         )
                         var i = 0;
-
                         db.getCurrencyAmount().getCurrencies().forEach { entry ->
                             data.set(
                                 i,
@@ -117,7 +113,6 @@ class MainActivity : AppCompatActivity() {
                             )
                             i++;
                         }
-
                         val historyFormat = db.getExchangeHistory();
                         historyList.add(
                             ExchangesHistory(
@@ -130,7 +125,6 @@ class MainActivity : AppCompatActivity() {
                                 R.drawable.sell
                             )
                         )
-
                         historyList.add(
                             ExchangesHistory(
                                 currencyToBuy.selectedItem.toString(),
@@ -145,28 +139,23 @@ class MainActivity : AppCompatActivity() {
                             )
                         )
                     } catch (
-                        ex: Exception
+                        ex: Exception,
                     ) {
                         Toast.makeText(this, ex.message, Toast.LENGTH_SHORT).show()
                     }
-
-
                     balanceView.adapter;
                     balanceView.adapter = balanceAdapter;
                     historyBalance.adapter = ExchangesAdapter(this, historyList)
-
-
                 }
             };
-            dialogBuilder.setNegativeButton("Dismiss"
+            dialogBuilder.setNegativeButton(
+                "Dismiss"
             ) { dialog, which ->
                 dialog.dismiss();
             };
             dialogBuilder.setView(mView);
             val alertDialog: AlertDialog = dialogBuilder.create();
             alertDialog.show();
-
-
         };
 
     }

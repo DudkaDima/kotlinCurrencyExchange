@@ -23,7 +23,6 @@ class DbHelper(
     context, "app", factory, 1
 ) {
 
-
     override fun onCreate(db: SQLiteDatabase?) {
         db!!.execSQL("DROP TABLE IF EXISTS bank_account");
         db!!.execSQL("DROP TABLE IF EXISTS history");
@@ -97,7 +96,6 @@ class DbHelper(
         }
     }
 
-
     fun saveExchangeHistory(
         accountHistory: CurrencyToStoreHistory,
     ) {
@@ -113,7 +111,6 @@ class DbHelper(
         )
         db.insert("history", null, values)
     }
-
 
     fun getExchangeHistory(): CurrencyToStoreHistory {
         val db = this.readableDatabase;
@@ -137,7 +134,5 @@ class DbHelper(
         val gson: Gson = Gson();
         return gson.fromJson(result.getString(1), BankAccount::class.java);
     }
-
-
 }
 

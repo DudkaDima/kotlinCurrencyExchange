@@ -16,9 +16,7 @@ class ListPersonalCurrency(
     private inner class ViewHolder internal constructor(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
         internal var tvLabel: TextView;
-
         init {
-
             tvLabel = itemView.findViewById(R.id.tvContact);
         }
 

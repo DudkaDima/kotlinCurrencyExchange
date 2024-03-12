@@ -32,7 +32,6 @@ class ExchangesAdapter(
             .setImageDrawable(holder.view.context.getDrawable(exchange.getOperationImage()))
     }
 
-
     override fun getItemCount() = exchanges.size;
 
     class ViewHolder(

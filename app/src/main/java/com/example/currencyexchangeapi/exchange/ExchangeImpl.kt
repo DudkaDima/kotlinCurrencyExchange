@@ -22,7 +22,6 @@ open class ExchangeImpl : Exchange {
         bankAccount: BankAccount,
     ): BankAccount {
 
-
         val accountCurrencyToSellAmount: AccountCurrency =
             bankAccount.getCurrencies().get(currencyToSellName)!!;
         val accountCurrencyToBuyAmount: AccountCurrency =
@@ -37,7 +36,6 @@ open class ExchangeImpl : Exchange {
                 bankAccount.getExchanges()
             )
         );
-
         bankAccount.getCurrencies().put(
             currencyToBuyName,
             currencyToBuyAmountAfterExchange(
@@ -48,7 +46,6 @@ open class ExchangeImpl : Exchange {
         bankAccount.setExchanges(bankAccount.getExchanges() + 1);
         return bankAccount;
     }
-
     private fun currencyToSellAmountAfterExchange(
         accountCurrency: AccountCurrency,
         amountToExchange: Double, exchangeCount: Int,
@@ -59,7 +56,6 @@ open class ExchangeImpl : Exchange {
                 accountCurrency.getAmount().subtract(BigDecimal(amountToExchange).stripTrailingZeros()),
                 accountCurrency.getName()
             );
-
         } else {
             calculatedAccountCurrency = AccountCurrency(
                 accountCurrency.getAmount().subtract(
@@ -77,7 +73,6 @@ open class ExchangeImpl : Exchange {
         }
 
     }
-
 
     private fun currencyToBuyAmountAfterExchange(
         accountCurrency: AccountCurrency,

@@ -8,9 +8,7 @@ import java.util.Properties
 
 class PropertyReader(
     private var context: Context,
-
     ) {
-
     private lateinit var properties: Properties;
 
     fun getProperties(file: String): Properties {

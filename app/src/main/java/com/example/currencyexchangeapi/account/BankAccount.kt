@@ -2,15 +2,20 @@ package com.example.currencyexchangeapi.account
 
 import com.example.currencyexchangeapi.currency.AccountCurrency
 
-class BankAccount (
+class BankAccount(
     private var id: Int,
     private var currencies: HashMap<String, AccountCurrency>,
     private var exchanges: Int,
 ) {
-    constructor(bankAccount: BankAccount) : this(bankAccount.getId(), bankAccount.getCurrencies(), bankAccount.getExchanges())  {
+    constructor(bankAccount: BankAccount) : this(
+        bankAccount.getId(),
+        bankAccount.getCurrencies(),
+        bankAccount.getExchanges()
+    ) {
         this.currencies = bankAccount.getCurrencies();
         this.exchanges = bankAccount.getExchanges();
     }
+
     fun getCurrencies(): HashMap<String, AccountCurrency> {
         return currencies
     }
@@ -40,8 +45,7 @@ class BankAccount (
         return "BankAccount(id=$id, currencies=$currencies, exchanges=$exchanges)"
     }
 
-    fun getAllCurrencies(): Set<String>{
+    fun getAllCurrencies(): Set<String> {
         return currencies.keys;
     }
-
 }
