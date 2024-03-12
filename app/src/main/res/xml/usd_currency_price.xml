@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Currencies>
+    <Currency>
+        <name>EUR</name>
+        <price>1.25</price>
+    </Currency>
+</Currencies>

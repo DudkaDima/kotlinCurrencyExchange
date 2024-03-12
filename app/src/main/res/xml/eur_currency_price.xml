@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <currency>
+        <element>
+            <name>USD</name>
+            <price>0.8</price>
+        </element>
+    </currency>
+</root>
