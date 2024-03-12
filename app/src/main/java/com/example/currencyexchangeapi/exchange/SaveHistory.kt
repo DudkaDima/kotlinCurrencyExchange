@@ -17,8 +17,8 @@ class SaveHistory() {
             listOf.add(Currency(currencyToSell, bankAccountBeforeSave.get(currencyToSell)?.getAmount()!!.stripTrailingZeros().subtract(
                 bankAccountToSave.getCurrencies().get(currencyToSell)!!.getAmount().stripTrailingZeros()
             )))
-            listOf.add(Currency(currencyToBuy, bankAccountBeforeSave.get(currencyToBuy)?.getAmount()!!.add(
-                bankAccountToSave.getCurrencies().get(currencyToBuy)!!.getAmount().stripTrailingZeros()
+            listOf.add(Currency(currencyToBuy, bankAccountToSave.getCurrencies().get(currencyToBuy)?.getAmount()!!.subtract(
+                bankAccountBeforeSave.get(currencyToBuy)!!.getAmount().stripTrailingZeros()
             )))
 
 
